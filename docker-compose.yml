@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  dnsdist:
+    image: powerdns/dnsdist-20:latest
+    container_name: dnsdist
+    restart: unless-stopped
+    volumes:
+      - ./dnsdist/dnsdist.conf:/etc/dnsdist/dnsdist.conf:ro
+    ports:
+      - "8053:1053/udp"
+      - "8053:1053/tcp"
